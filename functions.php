@@ -23,11 +23,7 @@ function add_user($email, $password)
         "password" => password_hash($password, PASSWORD_DEFAULT)
     ]);
 
-    $sql = 'SELECT * FROM users WHERE login = ?';
-    $query = $pdo->prepare($sql);
-    $query->execute([$email]);
-    $user = $query->fetch(PDO::FETCH_ASSOC);
-    return $user['id'];
+    return $pdo->lastInsertId();
 };
 
 function set_flash_message($name, $message)
