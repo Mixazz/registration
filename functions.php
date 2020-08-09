@@ -52,23 +52,17 @@ function redirect_to($path)
     header('Location: ' . $path);
 }
 
-function login($email, $password) {
-    //Провераяем есть ли данный пользователь в базе
+function login($email, $password)
+{
+
     $user = get_user_by_email($email);
-    //Проверяем совподает ли хеш рароля
-    if (!empty($user)){
-        if (password_verify($password, $user['password'])){
+
+    if (!empty($user)) {
+        if (password_verify($password, $user['password'])) {
+            set_flash_message('success', 'Добро пожаловать, вы авторизировались!');
             return true;
         }
     }
+    set_flash_message('danger', 'Неверный логин или пароль');
     return false;
 };
-
-
-
-//Проверяем совподает ли хеш рароля
-//Перенаправляем на страницу
-
-
-//Формируем хеш сообщения
-//Возвращаем False
