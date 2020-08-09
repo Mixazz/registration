@@ -51,3 +51,24 @@ function redirect_to($path)
     // Перенаправляет на другую страницу
     header('Location: ' . $path);
 }
+
+function login($email, $password) {
+    //Провераяем есть ли данный пользователь в базе
+    $user = get_user_by_email($email);
+    //Проверяем совподает ли хеш рароля
+    if (!empty($user)){
+        if (password_verify($password, $user['password'])){
+            return true;
+        }
+    }
+    return false;
+};
+
+
+
+//Проверяем совподает ли хеш рароля
+//Перенаправляем на страницу
+
+
+//Формируем хеш сообщения
+//Возвращаем False
