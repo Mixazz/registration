@@ -11,6 +11,6 @@ $login = login($email, $password);
 if (!empty($login)) {
     redirect_to('/list_users.php');
     exit;
-} else {
-    redirect_to('/login.php');
 }
+
+redirect_to('/login.php');

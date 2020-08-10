@@ -10,12 +10,13 @@ if (!empty($user)) {
     set_flash_message('danger', 'Этот эл. адрес уже занят другим пользователем.');
     redirect_to('/');
     exit;
-} else {
-    add_user($email, $password);
-
-    set_flash_message('success', 'Регистрация успешна');
-    redirect_to('/login.php');
 }
+
+add_user($email, $password);
+
+set_flash_message('success', 'Регистрация успешна');
+redirect_to('/login.php');
+
 
 // Получаем данные из формы ++
 // Проверяем есть ли введенный email в базе данных ++
